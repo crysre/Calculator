@@ -31,13 +31,13 @@
 }
 
 body{
-    background-color: azure;
+    background-color: #F8F8F8;
 }
 .display{
     
     height: 150px;
     width: 550px;
-    background-color: #F8F8F8;
+    background-color: azure;
     border: 5px solid black;
 }
 
