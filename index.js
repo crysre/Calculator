@@ -1,3 +1,5 @@
+let displayValue = 0
+
 function add(a, b){
     return a+b
 };
@@ -30,3 +32,10 @@ function operate(firstNo, operator, secondNo){
     }
 };
 
+let buttons = document.querySelectorAll(".items")
+let display = document.querySelector(".display")
+
+buttons.onclick((event)=>{
+    let clickedButton = event.target;
+    display.innerText = clickedButton.textContent;
+})
