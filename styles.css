@@ -1,0 +1,63 @@
+.container{
+    display: flex;
+    height: 780px;
+    width: 600px;
+    background-color: #AFD198;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    border: 10px solid black;
+    border-radius: 4%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.btn{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr ;
+}
+.btnItem{
+    height: 100px;
+    width: 270px;
+    background-color: #E8EFCF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 2px solid black;
+}
+
+body{
+    background-color: azure;
+}
+.display{
+    
+    height: 150px;
+    width: 550px;
+    background-color: #F8F8F8;
+    border: 5px solid black;
+}
+
+.button{
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+
+}
+
+.item{
+    height: 100px;
+    width: 130px;
+    background-color:#E8EFCF;
+    font-size: 30px;
+    border: 2px solid black;
+}
+
+.btn > div , .item, .display{
+    border-radius: 8px;
+}
