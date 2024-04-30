@@ -61,29 +61,57 @@ buttons.forEach((button)=>{
     button.addEventListener("click", clickhandler1)
 })
 
+let opClickcount = 0
+let rResult = 0
+function executeIt(){
+    let result = operate(firstNumber, operator, secondNumber);
+    rResult = result
+    display.innerText = result;
+}
+
+execute.addEventListener("click", executeIt)
+
+
+
+
 opButtons.forEach((buttonOp)=>{
     buttonOp.addEventListener("click", (event)=>{
-        let clickedOp = event.target;
-        operator = clickedOp.textContent;
-        opDisplay.innerText = clickedOp.textContent;
+        opClickcount ++
+
+        if(opClickcount > 1){
+            executeIt()
+            firstNumber = rResult
+            secondNo = []
+            secondNumber = 0
+
+            
+            let clickedOp = event.target;
+            operator = clickedOp.textContent;
+            opDisplay.innerText = clickedOp.textContent;
         
-        buttons.forEach((button)=>{
+            buttons.forEach((button)=>{
             button.removeEventListener("click", clickhandler1)
         })
 
         buttons.forEach((button)=>{
             button.addEventListener("click", clickhandler2)
         })
+        }else{
+            let clickedOp = event.target;
+            operator = clickedOp.textContent;
+            opDisplay.innerText = clickedOp.textContent;
+        
+            buttons.forEach((button)=>{
+            button.removeEventListener("click", clickhandler1)
+        })
+
+        buttons.forEach((button)=>{
+            button.addEventListener("click", clickhandler2)
+        })
+        }
         
     })
 })
-
-execute.addEventListener("click", ()=>{
-    let result = operate(firstNumber, operator, secondNumber);
-    display.innerText = result;
- 
-})
-
 
 allClear.addEventListener("click", ()=>{
 
@@ -91,8 +119,36 @@ allClear.addEventListener("click", ()=>{
     secondNo = []
     firstNumber = 0
     secondNumber = 0
-    operator = null
-
+    operator = ""
+    opClickcount = 0
+    rResult = 0
     display.innerText = 0
     opDisplay.innerText = ""
+
+    buttons.forEach((button)=>{
+        button.removeEventListener("click", clickhandler2)
+        button.addEventListener("click", clickhandler1)
+    })
+    
+    
 })
+
+let backSpace = document.querySelector(".back")
+
+backSpace.addEventListener("click", () => {
+    if (secondNo.length > 0) {
+        secondNo.pop();
+        secondNumber = parseInt(secondNo.join(""));
+        display.innerText = secondNumber;
+    } else if (operator !== "") {
+        operator = "";
+        opDisplay.innerText = "";
+    } else if (firstNo.length > 0) {
+        firstNo.pop();
+        firstNumber = parseInt(firstNo.join(""));
+        display.innerText = firstNumber;
+    }
+});
+
+
+
