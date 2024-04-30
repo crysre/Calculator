@@ -35,6 +35,8 @@ function operate(firstNo, operator, secondNo){
 let firstNumber = 0;
 let secondNumber = 0;
 
+let dot = document.querySelector(".dot")
+
 let buttons = document.querySelectorAll(".n");
 let opButtons = document.querySelectorAll(".o")
 let display = document.querySelector(".display")
@@ -46,14 +48,14 @@ let allClear = document.querySelector(".aClear")
 function clickhandler1 (event){
     let clickedButton = event.target;
     firstNo.push(clickedButton.textContent)
-    firstNumber = parseInt(firstNo.join(""))
+    firstNumber = parseFloat(firstNo.join(""))
     display.innerText = firstNumber
 }
 
 function clickhandler2 (event){
     let clickedButton = event.target;
     secondNo.push(clickedButton.textContent)
-    secondNumber = parseInt(secondNo.join(""))
+    secondNumber = parseFloat(secondNo.join(""))
     display.innerText = secondNumber
 }
 
@@ -138,14 +140,26 @@ let backSpace = document.querySelector(".back")
 backSpace.addEventListener("click", () => {
     if (secondNo.length > 0) {
         secondNo.pop();
-        secondNumber = parseInt(secondNo.join(""));
+        secondNumber = parseFloat(secondNo.join(""));
         display.innerText = secondNumber;
     } else if (operator !== "") {
         operator = "";
         opDisplay.innerText = "";
     } else if (firstNo.length > 0) {
         firstNo.pop();
-        firstNumber = parseInt(firstNo.join(""));
+        firstNumber = parseFloat(firstNo.join(""));
+        display.innerText = firstNumber;
+    }
+});
+
+dot.addEventListener("click", ()=>{
+    if (secondNo.length > 0) {
+        secondNo.push(`.`);
+        secondNumber = parseFloat(secondNo.join(""));
+        display.innerText = secondNumber;
+    } else if (firstNo.length > 0) {
+        firstNo.push(`.`);
+        firstNumber = parseFloat(firstNo.join(""));
         display.innerText = firstNumber;
     }
 });
